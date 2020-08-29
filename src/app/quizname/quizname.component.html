@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    <h3>TAKE A QUIZ</h3>
+    <h6 class="row m-5 col-lg-6">Click on one of the quizzes to test your knowledge!</h6>
+    <div class="row m-5 ">
+
+        <div class="col-lg-12">
+            <form [formGroup]="selectForm" (submit)="onsubmit()">
+                <div class="col">
+                    <div class="col-lg-6 form-input">
+                        <label for="Source">Category</label>
+                        <select   formControlName="Category" id="Category" class="form-control">
+                            <option value="select" disabled>select</option>
+                            <option [value]="b.id" *ngFor="let b of categoryList;let k=index;">{{b.name}}</option>
+                        </select>
+                        <!-- <input type="text" id="Source"  class="form-control" /> -->
+                    </div>
+                    <div class="col-lg-6 form-input">
+                        <label for="Source">Difficulty Level</label>
+                        <select   formControlName="difficultyLevel" id="difficultyLevel" class="form-control">
+                            <option value="select" disabled>select</option>
+                            <option [value]="a" *ngFor="let a of difficultyLevel;let j=index;">{{a}}</option>
+                        </select>
+                        <!-- <input type="text" id="Source"  class="form-control" /> -->
+                    </div>
+                    <div class="col-lg-6 form-input">
+                        <input type="submit"  data-toggle="modal" data-target="#exampleModal" id="submitbutton" text='SUBMIT' class="btn-btn-primary" />
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- put a form with --select category here and difficulty level-->
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Enter User Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+<!--   
+          <form class="form-signin" [formGroup]="reserveForm" (submit)="confirm(this.seatnumbers)">
+                         
+            <div class="form-group">
+                <input type="text" id="userInput" formControlName="userInput" class="form-control"
+                    placeholder="User Name or Email or Phone" required autofocus>
+  
+            </div>
+           
+            <div class="form-group">
+                <input [disabled]="!reserveForm.valid"   class="btn btn-lg btn-primary btn-block text-uppercase"
+                 type="submit" value="BOOK">
+            </div>
+          </form> -->
+          <div>Instructions:</div>
+          <ol>
+          <li>Dont open tabs</li>
+          <li>Closing in the middle of the session will not save answers</li>
+          <li>Incase of any problem in display of the question or answer.<a href="#" target="_blank">Report the incident here.</a></li>
+          </ol>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button"  class="btn btn-danger" data-dismiss="modal">CANCEL</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal"><a [routerLink]="['/quiz']" [queryParams]="{Category:this.selectForm.value.Category,difficultyLevel:this.selectForm.value.difficultyLevel}">START QUIZ</a></button>
+          <!-- <button type="button" class="btn btn-primary">Continue reserving</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
