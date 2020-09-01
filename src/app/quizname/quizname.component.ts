@@ -7,6 +7,10 @@ import { QuizzingService } from '../quizzing.service';
   styleUrls: ['./quizname.component.css']
 })
 export class QuiznameComponent implements OnInit {
+  quizfact=["practicing retrieval of something after learning it, for instance by taking a quiz or test, makes you more likely to retain it for the long term",
+  "Testing identifies gaps in knowledge",
+  "Testing causes students to learn more from the next study episode. Essentially it reduces forgetting which makes the next related study area more productive.",
+    "Testing produces better organization of knowledge by helping the brain organize material in clusters to allow better retrieval."]
   selectForm
   quizList
   difficultyLevel=["easy","medium","difficult"];
@@ -46,8 +50,14 @@ export class QuiznameComponent implements OnInit {
   ngOnInit(): void {
   }
   onsubmit(){
-    // console.log(this.selectForm.value);
-    
+    if(!this.selectForm.value){
+      document.getElementById('alert-text').innerHTML="Please Choose both the fields.";
+      document.getElementById('alert-text').style.color="rgb(178,34,34)";
+    }
+   
 
+  }
+  reload(){
+    location.reload();
   }
 }

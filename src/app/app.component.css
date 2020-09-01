@@ -1,5 +1,52 @@
 .navbar {
-    position: -webkit-sticky; /* Safari */
-    position: sticky;
     top: 0;
+    height:20vh;
+    width:100vw;
+    background-color: black; 
+    margin-left: -17px;
+
   }
+  .nav-link{
+    font-size:3vh;
+    color:white;
+  }
+ 
+  .navbar-brand{
+    font-size:10vh;
+    background: -webkit-linear-gradient(90deg,rgb(147, 255, 196),rgb(55, 177, 110), rgb(49, 27, 247));
+    -webkit-background-clip: text;
+  
+    /* background-clip:border-box; */
+    -webkit-text-fill-color: transparent;
+     /* fallback background*/
+     color:seagreen;
+     font-family: Sentinel SSm A,Sentinel SSm B,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  }
+  
+.container-fluid{
+  background-color:#1b1a1a;
+  width:100vw;
+}  
+footer{
+  background:linear-gradient(90deg,rgb(147, 255, 196),rgb(55, 177, 110), rgb(49, 27, 247));
+    /* fallback background*/
+  background-color:seagreen;
+  height:18vh;
+  width: 100vw;
+  text-align:center;
+  margin-bottom:0;
+  margin-left:-16px;
+  display:flex;
+  align-items:center;
+  position:sticky;
+ 
+}
+.navbar-brand{
+  size:2vh;
+}
+.footer-items{
+  list-style-type: none;
+}
+.navbar-nav.d-flex.justify-content-around.align-items-center{
+  width:62vw;
+}

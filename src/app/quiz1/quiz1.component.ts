@@ -26,7 +26,7 @@ export class Quiz1Component implements OnInit {
   //--------------
   dataLoaded: Boolean = false;
   ques_num;
-  score
+  score:any
   constructor(private quiz: QuizzingService, private route: ActivatedRoute) {
     //1.load the data from api and populate the questions 
     //2.only on eoption should be selected 
@@ -57,13 +57,13 @@ export class Quiz1Component implements OnInit {
         this.dataLoaded = true;
 
         console.log(data);
-        this.quizList = data["results"]
+        this.quizList = data["results"] //quizlist
         this.clone = Object.assign({}, this.quizList);
         console.log(this.quizList);
 
-        if (this.quizList.length == 0) {
+        if (this.quizList.length === 0) {
           let d = <HTMLElement>document.getElementById('no')
-          d.textContent = "No Quiz found.Could you try another choice?"
+          d.innerHTML = "No Quiz found.Could you try another choice?"
         }
 
         //adding new parameters
@@ -102,26 +102,6 @@ export class Quiz1Component implements OnInit {
 
     console.log(option_selected, correct_answer, index);
 
-    // if (this.finalAnswers.length == 0) {
-    //   console.log("the array is empty");
-    //   this.finalAnswers.push({ "option_selected": option_selected, "correct_answer": correct_answer, "question_no": index })
-
-    // } else {
-
-    //   console.log("above the question if");
-    //   this.finalAnswers.forEach(element => {
-    //     if (element.question_no === index) {
-    //       console.log("inside the if");
-    //       element["option_selected"] = option_selected;
-    //       element["correct_answer"] = correct_answer;
-    //     } else {
-    //       //push the element
-    //       console.log("pushing the selection if not present in the array");
-
-    //       this.finalAnswers.push({ "option_selected": option_selected, "correct_answer": correct_answer, "question_no": index })
-    //     }
-    //   });
-    // }
     console.dir(this.quizList);
 
   }
@@ -129,62 +109,39 @@ export class Quiz1Component implements OnInit {
 
   Calculate() {
     let marks=0;
+    
+    let no_answer=0;
+    console.log(this.quizList);
+    
     this.quizList.forEach(element => {
       if(element.correct_answer==element.option_chosen){
         marks++;
       }
+      if(element.option_chosen==null||element.option_chosen==undefined){
+        no_answer++;
+
+      }
     });
-    this.score=marks
-    alert(this.score);
+    console.log(no_answer);
+    if(no_answer===10){
+      this.score="You have not answered any of the questions."
+    }else{
+      this.score="You have scored "+marks+"! KUDOS!!"
+    }
+    // this.score=marks;
+    // console.log(this.score);
   }
 
 
-  //pagination functions 
+  //pagination functions
+
   NextQ() {
-
-    this.isitAnswered(this.startIndex);//function call to make option remain checked 
-
-    console.log(this.quizList);
-    if (document.getElementById('prev').style.backgroundColor == "grey" && this.startIndex > 0) {
-      document.getElementById('prev').style.backgroundColor == "white";
-    }
-    //if last question  
-    if (this.startIndex == 9) {
-
-      //disable the button or remove it 
-      document.getElementById('next').style.backgroundColor = "grey"
-    } else {
       this.startIndex++;
-
     }
-
-
-  }
   PreviousQ() {
-
-    this.isitAnswered(this.startIndex);//function call to make option remain checked 
-
-    console.log(this.quizList);
-    
-   
-    if (document.getElementById('next').style.backgroundColor == "grey" && this.startIndex < 10) {
-      document.getElementById('next').style.backgroundColor == "white";
-    }
-    console.log('prev-before' + this.startIndex)
-    //if first question
-    if (this.startIndex == 0) {
-      //disable the previous button 
-      let x = <HTMLElement>document.getElementById('prev');
-      x.style.backgroundColor = "grey";
-    } else {
       this.startIndex--;
-    }
-    console.log('prev-after' + this.startIndex)
-
   }
   updateIndex(pageIndex) {
-
-    this.isitAnswered(pageIndex);//function call to make option remain checked 
 
     console.log(this.quizList);
     this.startIndex = pageIndex;
@@ -194,20 +151,6 @@ export class Quiz1Component implements OnInit {
     }
     if (document.getElementById('next').style.backgroundColor == "grey" && this.startIndex < 10) {
       document.getElementById('next').style.backgroundColor == "white";
-    }
-
-  }
-  isitAnswered(index) {
-
-    console.log("being checked if is answered",this.quizList,index,this.quizList[index]);
-    
-    if (this.quizList[index].option_chosen!==null) {
-      console.log('205',this.quizList[index].option_chosen);
-      
-      let optionChosen = this.quizList[index].option_chosen;
-      console.log(optionChosen);
-      let x = <HTMLInputElement>document.getElementById(optionChosen)
-      x.checked = true;
     }
 
   }

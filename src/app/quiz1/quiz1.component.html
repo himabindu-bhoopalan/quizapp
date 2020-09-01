@@ -1,74 +1,96 @@
-<!-- <form action="onsubmit()">
-    <div *ngFor='let a of quizList;let i=index'>{{a.question}}
-        <div *ngFor='let b of a.options'>
-            <input type="radio" (click)="change(b,a.correct_answer,i)" id="{{b}}" name="{{a.correct_answer}}"
-                value="{{b}}">
-            <label for="{{b}}">{{b}}</label>
-        </div>
-    </div>
-    <input value="submit" type="submit">
-</form> -->
-<!-- <form name="simpleform" onsubmit="send()">
-    <label for="fname">First name:</label><br>
-    <input type="text" id="fname" name="fname" value="John"><br>
-    <label for="lname">Last name:</label><br>
-    <input type="text" id="lname" name="lname" value="Doe"><br><br>
-    <input type="submit" value="Submit">
-  </form> -->
-<div class="container-fluid">
-   
-        <div class="card justify-content-center" style="width: 20rem;">
-            <div *ngIf="dataLoaded==false">
-                <div class="spinner-border"></div>
-            </div>
-            <div class="card-body ">
+<div class="taking-quiz d-flex justify-content-center">
+    <div class="taking-quiz-items">
+
+        <!-- question-card -->
+
+        <div class="card mt-3" style="width: 44rem;">
+           
+
+            <div class="card-body">
                 <h5 class="card-title">Question No.{{startIndex+1}}</h5>
-                <h6 class="card-subtitle mb-2 text-muted">{{quizList[startIndex].question}}</h6>
+                <div  class="d-flex justify-content-center">
+                    <div *ngIf="dataLoaded==false" class="spinner-border text-success" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+                <div class="text-warning text-center" id="no"></div>
+               
+                <h6 [innerHTML]="quizList[startIndex].question" class="card-subtitle mb-2">
+                    {{quizList[startIndex].question}}</h6>
+
+              
+
                 <div class="card-text" *ngFor='let b of quizList[startIndex].options'>
                     <input type="radio" (click)="change(b,quizList[startIndex].correct_answer,startIndex)" id="{{b}}"
-                        name="{{quizList[startIndex].correct_answer}}" value="{{b}}">
-                    <label for="{{b}}">{{b}}</label>
+                        name="{{quizList[startIndex].correct_answer}}" [ngClass]=""
+                        [checked]="b === quizList[startIndex].option_chosen" value="{{b}}">
+
+                    <label class="option-label" for="{{b}}">{{b}}</label>
                 </div>
             </div>
 
         </div>
 
-
-
-
-        <!-- <div class="card"> -->
-            <div class="card-text" id="no">
-            </div>
-        <!-- </div> -->
-
         <!-- pagination -->
-        <nav aria-label="Page navigation example" >
-            <ul class="pagination justify-content-center">
+        <div class="Page-navigation-example">
+            <nav aria-label="Page-navigation-example">
+                <ul class="pagination justify-content-center ">
 
-                <li class="page-item">
-                    <a class="page-link" id="prev" (click)="PreviousQ()" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                </li>
+                    <li class="page-item" [ngClass]="{disabled:startIndex === 0}">
+                        <a class="page-link" id="prev" (click)="PreviousQ()" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
 
-                <li class="page-item" *ngFor="let item of quizList;let po =index">
-                    <a class="page-link" (click)="updateIndex(po)">{{po+1}}</a>
-                </li>
+                    <li class="page-item" *ngFor="let item of quizList;let po =index">
+                        <a class="page-link" [ngClass]="{active:po === startIndex}"
+                            (click)="updateIndex(po)">{{po+1}}</a>
+                    </li>
 
-                <li class="page-item">
-                    <a class="page-link" id="next" (click)="NextQ()" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </li>
+                    <li class="page-item" [ngClass]="{disabled:startIndex === 9}">
+                        <a class="page-link" id="next" (click)="NextQ()" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
 
-            </ul>
-        </nav>
+                </ul>
+            </nav>
+        </div>
+
 
 
         <!-- submit  button for the quiz -->
         <div>
-            <input class="btn btn-success" type="submit" (click)="Calculate()" value="Submit">
+            <input class="btn btn-primary" (click)="Calculate()" data-toggle="modal" data-target="#exampleModal2"
+                type="submit" value="FINISH">
         </div>
+
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <img src="https://www.freepngimg.com/thumb/trophy/75846-trophy-cup-icon-free-download-image-thumb.png" alt="">
+                </div>
+                <div class="modal-body score">
+                    <p class="text-center result">{{score}}</p>
+                </div>
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-success" data-dismiss="modal"><i class="fas fa-share-alt-square"></i>SHARE</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

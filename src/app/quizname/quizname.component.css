@@ -1,0 +1,35 @@
+#Category{
+    background-color: #333131;
+  }
+#difficultyLevel{
+    background-color: #333131;
+}
+.form-control{
+    color:whitesmoke;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 1vmin;
+    display:inline-block;
+}
+.form-label{
+    color:white;
+}
+#submitbutton{
+    border:1px white;
+    /* background: linear-gradient(-90deg,green,blue); */
+}
+
+.text{
+    color:white;
+}
+.alert-text{
+    color:rgb(226, 49, 49);
+}
+row.m-5.col-lg-6.mx-auto.text{
+    border:5px solid white;
+}
+#alert-text{
+    color:red;
+}
+.pagination{
+    position: fixed;
+}
