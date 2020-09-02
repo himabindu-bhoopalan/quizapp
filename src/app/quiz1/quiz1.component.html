@@ -82,17 +82,18 @@
                     </button>
                 </div>
                 <div *ngIf="score!==0" class="modal-body score">
-                    <div class="d-flex justify-content-center">
+                    
+                    <div *ngIf="score>=5" class="d-flex justify-content-center">
                         <img src="https://www.freepngimg.com/thumb/trophy/75846-trophy-cup-icon-free-download-image-thumb.png" alt="">
                     </div>
                    
-                    <p class="text-center result">"You have scored "+{{this.score}}+"! KUDOS!!"</p>
+                    <p class="text-center result">You have scored {{this.score}}points. KUDOS!!</p>
                 </div>
                
                
                 <div *ngIf="score===0" class="modal-body score">
                     <div class="d-flex justify-content-center">
-                        <img src="https://www.clipartmax.com/png/middle/64-644516_very-sad-emoji-sad-emoji.png" alt="">
+                        <img id="sad-emoji" src="https://images.vexels.com/media/users/3/134884/isolated/preview/48e6880a62eaa4c1da1cbbc0880804ec-worry-sad-emoji-emoticon-by-vexels.png" alt="">
                     </div>
                     <p class="text-center result">You have not answered any of the questions.</p>
                 </div>
