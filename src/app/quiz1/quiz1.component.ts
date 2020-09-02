@@ -124,9 +124,9 @@ export class Quiz1Component implements OnInit {
     });
     console.log(no_answer);
     if(no_answer===10){
-      this.score="You have not answered any of the questions."
+      this.score=0
     }else{
-      this.score="You have scored "+marks+"! KUDOS!!"
+      this.score=marks;
     }
     // this.score=marks;
     // console.log(this.score);

@@ -22,8 +22,8 @@
 
                 <div class="card-text" *ngFor='let b of quizList[startIndex].options'>
                     <input type="radio" (click)="change(b,quizList[startIndex].correct_answer,startIndex)" id="{{b}}"
-                        name="{{quizList[startIndex].correct_answer}}" [ngClass]=""
-                        [checked]="b === quizList[startIndex].option_chosen" value="{{b}}">
+                        name="{{quizList[startIndex].correct_answer}}"
+                        [checked]="b === quizList[startIndex].option_chosen"  [innerHTML]="b" value="{{b}}">
 
                     <label class="option-label" for="{{b}}">{{b}}</label>
                 </div>
@@ -81,12 +81,22 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <img src="https://www.freepngimg.com/thumb/trophy/75846-trophy-cup-icon-free-download-image-thumb.png" alt="">
+                <div *ngIf="score!==0" class="modal-body score">
+                    <div class="d-flex justify-content-center">
+                        <img src="https://www.freepngimg.com/thumb/trophy/75846-trophy-cup-icon-free-download-image-thumb.png" alt="">
+                    </div>
+                   
+                    <p class="text-center result">"You have scored "+{{this.score}}+"! KUDOS!!"</p>
                 </div>
-                <div class="modal-body score">
-                    <p class="text-center result">{{score}}</p>
+               
+               
+                <div *ngIf="score===0" class="modal-body score">
+                    <div class="d-flex justify-content-center">
+                        <img src="https://www.clipartmax.com/png/middle/64-644516_very-sad-emoji-sad-emoji.png" alt="">
+                    </div>
+                    <p class="text-center result">You have not answered any of the questions.</p>
                 </div>
+
                 <div class="modal-footer">
                     <!-- <button type="button" class="btn btn-success" data-dismiss="modal"><i class="fas fa-share-alt-square"></i>SHARE</button> -->
                 </div>
