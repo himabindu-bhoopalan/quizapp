@@ -55,3 +55,77 @@ a.page-link.active {
     height:8vh;
     width:8vh;
 }
+.flex-items{
+    height:50px;
+    width:50px;
+    background-color:red;
+    padding:2px;
+    margin:2px ;
+
+}
+@media screen and (max-width: 600px) {
+    .red-cubes{
+        width:300px;
+        height:auto;
+        border:3px solid black;
+    }
+    .Page-navigation-example{
+        margin-top:6vh;
+    }
+    input.btn.btn-primary{
+        margin-left: 23vw;
+        margin-bottom: 5vh;
+        width: 20vmin;
+    }
+    /* question number */
+    .card-title{
+    color:white;
+    font-size:3vmin;
+    }
+    /* options */
+    .card-text{
+        color:seagreen;
+        font-size:3vmin;
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: italic;
+    }
+    .card-subtitle{
+        color:#537ad2e8;
+        font-size:4vmin;
+        font-family: Arial, Helvetica, sans-serif;
+        font-style: italic;
+    }
+    .option-label{
+        padding-left:2vmin;
+    }
+    a.page-link{
+       background-color:#212020;
+       color:white;
+    
+    }
+    a.page-link:hover{
+        color:#537ad2e8;
+    }
+    
+    a.page-link.active {
+        background-color: seagreen;
+        color: white;
+    }
+    .fa.fa-trophy{
+        /* color:gold; */
+        height:50px;
+        width:50px;
+    }
+    .result{
+        font-size:5vmin;
+    }
+    #sad-emoji{
+        height:8vh;
+        width:8vh;
+    }
+    .pagination.justify-content-center{
+        margin-top:6vh;
+        width:500px;
+        /* height: */
+    }
+  }

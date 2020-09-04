@@ -33,3 +33,19 @@ row.m-5.col-lg-6.mx-auto.text{
 .pagination{
     position: fixed;
 }
+@media screen and (max-width: 600px) {
+    /* body {
+      background-color: blue;
+    } */
+    .row{
+        flex-direction: column;
+    }
+    .submit-buttons{
+        flex-direction:column;
+        margin-top: 6vh;
+    }
+    [class*="col-"] {
+        width: 100%;
+        /* justify-items: stretch; */
+      }
+  }

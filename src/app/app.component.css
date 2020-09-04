@@ -50,3 +50,24 @@ footer{
 .navbar-nav.d-flex.justify-content-around.align-items-center{
   width:62vw;
 }
+@media only screen and (max-width: 600px) {
+  .container-fluid{
+    background-color:white;
+  } 
+  #footer{
+    flex-direction: column;
+    height:60vh;
+    justify-content: space-around;
+  }
+  
+  .footer-items{
+    align-self: center;
+  }
+  .navbar-brand{
+   height: 18vh;
+  }
+  .navbar{
+    height: 40vh;
+  }
+}
+ 

@@ -34,7 +34,7 @@
         <!-- pagination -->
         <div class="Page-navigation-example">
             <nav aria-label="Page-navigation-example">
-                <ul class="pagination justify-content-center ">
+                <ul class="pagination justify-content-center">
 
                     <li class="page-item" [ngClass]="{disabled:startIndex === 0}">
                         <a class="page-link" id="prev" (click)="PreviousQ()" aria-label="Previous">
@@ -60,15 +60,12 @@
         </div>
 
 
-
         <!-- submit  button for the quiz -->
         <div>
             <input class="btn btn-primary" (click)="Calculate()" data-toggle="modal" data-target="#exampleModal2"
                 type="submit" value="FINISH">
         </div>
-
     </div>
-
 
     <!-- Modal -->
     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
