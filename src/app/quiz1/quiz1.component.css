@@ -64,10 +64,21 @@ a.page-link.active {
 
 }
 @media screen and (max-width: 600px) {
-    .red-cubes{
-        width:300px;
-        height:auto;
-        border:3px solid black;
+   
+    input.btn.btn-primary {
+    margin-left: 67vw;
+    margin-bottom: 5vh;
+    width: 20vmin;
+    }
+    a.page-link {
+        width: 1vw;
+        height: 10vh;
+        font-size: 3.5vh;
+        padding: 3vh;
+    }
+    .card.mt-3{
+        width:19rem;
+        margin-left: 30vw;
     }
     .Page-navigation-example{
         margin-top:6vh;
