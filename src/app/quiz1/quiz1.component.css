@@ -9,6 +9,9 @@ input.btn.btn-primary{
     margin-bottom: 5vh;
     width: 20vmin;
 }
+.card.mt-3{
+    width: 44rem;
+}
 /* question number */
 .card-title{
 color:white;
